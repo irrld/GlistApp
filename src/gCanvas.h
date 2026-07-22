@@ -8,7 +8,6 @@
 #ifndef GCANVAS_H_
 #define GCANVAS_H_
 
-#include "gBaseCanvas.h"
 #include "gApp.h"
 #include "gImage.h"
 
@@ -33,6 +32,16 @@ public:
 	void mouseEntered();
 	void mouseExited();
 	void windowResized(int w, int h);
+
+
+	void deviceOrientationChanged(DeviceOrientation deviceorientation);
+
+	void touchMoved(int x, int y, int fingerId);
+	void touchPressed(int x, int y, int fingerId);
+	void touchReleased(int x, int y, int fingerId);
+
+	void pause();
+	void resume();
 
 	void showNotify();
 	void hideNotify();

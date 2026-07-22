@@ -82,7 +82,7 @@ endif()
 
 
 ########## PATHS AND VARIABLES ##########
-set(APP_DIR ${CMAKE_SOURCE_DIR})
+set(APP_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 project (${APP_NAME})
 
 enable_language(CXX)
@@ -95,10 +95,12 @@ set(TOP_DIR ${APP_DIR}/../..)
 set(MAIN_DIR ${TOP_DIR}/GlistEngine)
 set(ENGINE_DIR ${MAIN_DIR}/engine)
 
-if(APPLE)
-	add_subdirectory(${ENGINE_DIR} ./_build)
-else()
-	include(${ENGINE_DIR}/CMakeLists.txt)
+if(NOT TARGET GlistEngine)
+	if(APPLE)
+		add_subdirectory(${ENGINE_DIR} ./_build)
+	else()
+		include(${ENGINE_DIR}/CMakeLists.txt)
+	endif()
 endif()
 
 ########## SOURCE FILES AND INCLUDE DIRECTORIES ##########
@@ -114,10 +116,15 @@ set(GlistApp_HEADERS
 		${APP_DIR}/src/gCanvas.h
 )
 
-add_executable(${APP_NAME}
-		${GlistApp_SOURCES}
-		${GlistApp_HEADERS}
-)
+if(ANDROID)
+	add_library(${APP_NAME} SHARED
+			${GlistApp_SOURCES}
+			${GlistApp_HEADERS})
+else()
+	add_executable(${APP_NAME}
+			${GlistApp_SOURCES}
+			${GlistApp_HEADERS})
+endif()
 
 ######### APPLE AND IOS SPECIFIC SETTINGS #########
 

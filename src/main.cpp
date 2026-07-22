@@ -19,9 +19,15 @@
 #include "gApp.h"
 
 
+#if defined(ANDROID) || defined(__ANDROID__)
+void androidMain() {
+	gStartEngine(new gApp(), "GlistApp", G_WINDOWMODE_APP, 720, 1280);
+}
+#else
 int main(int argc, char **argv) {
 
 	gStartEngine(new gApp(argc, argv), "GlistApp", G_WINDOWMODE_APP, 1280, 720);
 
 	return 0;
 }
+#endif
