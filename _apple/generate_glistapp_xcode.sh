@@ -21,7 +21,7 @@ export OBJCXX="/usr/bin/clang++"
 if [ $1 = "ios" ]
 then
 cmake -S "$GLISTWD" \
--D CMAKE_TOOLCHAIN_FILE="$GLISTWD/_macos/ios.toolchain.cmake" \
+-D CMAKE_TOOLCHAIN_FILE="$GLISTWD/_apple/ios.toolchain.cmake" \
 -G Xcode \
 -B "$GLISTWD/_build" \
 -D PLATFORM=$PLATFORM \

@@ -15,7 +15,7 @@ This folder contains the build tooling for generating an Xcode project for Glist
 
 1. Open a terminal and navigate into this folder:
    ```sh
-   cd glist/myglistapps/GlistApp/_macos
+   cd glist/myglistapps/GlistApp/_apple
    ```
 2. Generate the Xcode project:
    ```sh
@@ -37,7 +37,7 @@ This folder contains the build tooling for generating an Xcode project for Glist
    Your Team ID is found in your [Apple Developer account](https://developer.apple.com/account) under Membership.
 3. From this folder, generate the project:
    ```sh
-   cd glist/myglistapps/GlistApp/_macos
+   cd glist/myglistapps/GlistApp/_apple
    sh generate_glistapp_xcode.sh ios
    ```
    By default this targets the iOS Simulator (`SIMULATOR64COMBINED`). To build for a physical device, edit `generate_glistapp_xcode.sh` and set `PLATFORM=OS64`.
@@ -58,7 +58,7 @@ The exposed variables at the top of `generate_glistapp_xcode.sh` can be changed:
 
 ### `Cannot find source file: .../macos/GlistApp.storyboard`
 
-The storyboard and `Info.plist` live in this `_macos` folder. If CMake looks for them under a plain `macos/` folder, the paths in the root `CMakeLists.txt` are out of date — they should point at `_macos/GlistApp.storyboard` and `_macos/Info.plist`.
+The storyboard and `Info.plist` live in this `_apple` folder. If CMake looks for them under a plain `macos/` folder, the paths in the root `CMakeLists.txt` are out of date — they should point at `_apple/GlistApp.storyboard` and `_apple/Info.plist`.
 
 ### `The variable GLIST_IOS_DEVELOPMENT_TEAM was not supplied!`
 

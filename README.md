@@ -6,4 +6,4 @@ Clone this repository under `glist/myglistapps` in your GlistEngine installation
 
 ## Building
 
-- **macOS / iOS (Xcode):** see [`_macos/README.md`](_macos/README.md).
+- **macOS / iOS (Xcode):** see [`_apple/README.md`](_apple/README.md).

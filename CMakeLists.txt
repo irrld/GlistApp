@@ -125,10 +125,10 @@ endif()
 ######### APPLE AND IOS SPECIFIC SETTINGS #########
 
 if(IOS)
-	set_source_files_properties(_macos/GlistApp.storyboard PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+	set_source_files_properties(_apple/GlistApp.storyboard PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 	target_sources(${APP_NAME}
 		PRIVATE
-			${APP_DIR}/_macos/GlistApp.storyboard
+			${APP_DIR}/_apple/GlistApp.storyboard
 			${IOS_PLUGIN_HEADERS}
 			${IOS_PLUGIN_SRCS}
 	)
@@ -160,7 +160,7 @@ if(IOS)
 
 	set_property(
 		TARGET ${APP_NAME}
-		PROPERTY MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/_macos/Info.plist
+		PROPERTY MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/_apple/Info.plist
 	)
 endif()
 
