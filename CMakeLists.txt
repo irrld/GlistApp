@@ -1,11 +1,11 @@
-cmake_minimum_required (VERSION 3.10.2)
+cmake_minimum_required(VERSION 3.13)
 
 ########## PROJECT NAME ##########
 set(APP_NAME GlistApp)
 
 
 ########## USED PLUGINS LIST ##########
-set(PLUGINS)
+set(PLUGINS )
 
 
 ########## CPP VERSION ##########
@@ -129,14 +129,10 @@ endif()
 ######### APPLE AND IOS SPECIFIC SETTINGS #########
 
 if(IOS)
-	if(PLUGINS MATCHES "^.*gipIOS.*$")
-		include(${TOP_DIR}/glistplugins/gipIOS/CMakeLists.txt)
-	endif()
-
-	set_source_files_properties(macos/GlistApp.storyboard PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+	set_source_files_properties(_macos/GlistApp.storyboard PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 	target_sources(${APP_NAME}
-		PRIVATE 
-			${APP_DIR}/macos/GlistApp.storyboard
+		PRIVATE
+			${APP_DIR}/_macos/GlistApp.storyboard
 			${IOS_PLUGIN_HEADERS}
 			${IOS_PLUGIN_SRCS}
 	)
@@ -168,20 +164,15 @@ if(IOS)
 
 	set_property(
 		TARGET ${APP_NAME}
-		PROPERTY MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/macos/Info.plist
+		PROPERTY MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/_macos/Info.plist
 	)
 endif()
 
-if(APPLE)
-	target_include_directories(
-	    ${APP_NAME}
-	        PRIVATE
-	            ${APP_DIR}/src
-	)
-else()
-	include_directories(${APP_NAME} PRIVATE
-                        ${APP_DIR}/src)
-endif()
+target_include_directories(
+	${APP_NAME}
+	PRIVATE
+	${APP_DIR}/src
+)
 
 ########## LINKING ##########
 # add lib dependencies
